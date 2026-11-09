@@ -1,0 +1,250 @@
+# Appointment API Endpoints Documentation
+
+This document describes all REST API endpoints for the appointment system.  
+All endpoints are located under:  
+http://<your-server>/clinic-booking/api/
+
+---
+
+## 1. Book Appointment
+
+**Endpoint:**  
+POST /api/book-appointment.php
+
+**Request (JSON):**
+{
+  "name": "John Doe",
+  "phone": "0561234567",
+  "email": "john@example.com",
+  "date": "2025-07-20",
+  "specialization": "General Surgery",
+  "doctor": "123",                // Doctor ID
+  "user_type": "patient",
+  "appointment_time": "10:00:00"  // 24h format
+}
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "appointmentNumber": "987654321" }
+- Error:  
+  { "success": false, "error": "Error message" }
+
+**Status Codes:**  
+200 OK (success or error in JSON)
+
+---
+
+## 2. Get Appointment Details
+
+**Endpoint:**  
+GET /api/get-appointment.php?appointmentNumber=987654321
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "appointment": { ...appointment fields... } }
+- Error:  
+  { "success": false, "error": "Appointment not found" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 3. Search Appointments
+
+**Endpoint:**  
+GET /api/search-appointments.php?query=John
+
+**Searches by:**  
+- Appointment Number  
+- Patient Name  
+- Mobile Number  
+(The query will match any of these fields, partial or full.)
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "results": [ { ...appointment fields... }, ... ] }
+- Error:  
+  { "success": false, "error": "Missing search query" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 4. List Appointments
+
+**Endpoint:**  
+GET /api/list-appointments.php  
+Optional query params:  
+- date=YYYY-MM-DD  
+- doctor=DoctorID  
+- status=Pending|Approved|Cancelled
+
+**Example:**  
+/api/list-appointments.php?date=2025-07-20&doctor=123&status=Pending
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "appointments": [ { ...appointment fields... }, ... ] }
+- Error:  
+  { "success": false, "error": "Error message" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 5. Cancel Appointment
+
+**Endpoint:**  
+POST /api/cancel-appointment.php
+
+**Request (JSON):**
+{
+  "appointmentNumber": "987654321"
+}
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "message": "Appointment cancelled successfully." }
+- Error:  
+  { "success": false, "error": "Error message" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 6. Get Doctors by Specialization
+
+**Endpoint:**  
+GET /api/get-doctors.php?specialization=General%20Surgery
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "doctors": [ { "ID": "123", "FullName": "Dr. Smith" }, ... ] }
+- Error:  
+  { "success": false, "error": "Missing specialization" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 7. Get Available Time Slots
+
+**Endpoint:**  
+GET /api/get-available-slots.php?doctor=123&date=2025-07-20
+
+**Response (JSON):**
+- Success:  
+  { "09:00:00": "09:00 AM", "09:30:00": "09:30 AM", ... }
+  (Only available slots are returned)
+- Error:  
+  { "error": "Missing doctor or date" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 8. Get All Specializations
+
+**Endpoint:**  
+GET /api/get-specializations.php
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "specializations": [ { "ID": 1, "Specialization": "Orthopedics" }, ... ] }
+- Error:  
+  { "success": false, "error": "Error message" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 9. Get All Doctors
+
+**Endpoint:**  
+GET /api/get-all-doctors.php
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "doctors": [ { "ID": 1, "FullName": "Dr. Karim", ... }, ... ] }
+- Error:  
+  { "success": false, "error": "Error message" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## 10. Get Doctor By Name
+
+**Endpoint:**  
+GET /api/get-doctor-by-name.php?name=Dr.%20Karim
+
+**Response (JSON):**
+- Success:  
+  { "success": true, "doctor": { ...doctor fields... } }
+- Error:  
+  { "success": false, "error": "Doctor not found" }
+
+**Status Codes:**  
+200 OK
+
+---
+
+## General Notes
+
+- All endpoints return JSON.
+- All errors are returned as { "success": false, "error": "..." } or { "error": "..." }.
+- All times are in 24-hour format (e.g., "10:00:00").
+- Use HTTP POST for endpoints that create or update data, and GET for fetching data.
+- Always check the "success" field in the response.
+
+---
+
+## Example Usage (React Native)
+
+**Book Appointment:**
+fetch('http://<server>/clinic-booking/api/book-appointment.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ ... }),
+})
+
+**Get Appointment:**
+fetch('http://<server>/clinic-booking/api/get-appointment.php?appointmentNumber=987654321')
+
+**Search Appointments:**
+fetch('http://<server>/clinic-booking/api/search-appointments.php?query=John')
+
+**Cancel Appointment:**
+fetch('http://<server>/clinic-booking/api/cancel-appointment.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ appointmentNumber: "987654321" }),
+})
+
+---
+
+## Appointment Table Fields
+
+- AppointmentNumber
+- Name
+- MobileNumber
+- Email
+- AppointmentDate
+- Specialization
+- Doctor
+- ApplyDate
+- AppointmentTime
+- Status
+- Remark
+
+---
+
+This documentation covers all endpoints needed for linking your React Native/mobile app to the backend appointment system.

@@ -1,0 +1,468 @@
+body {
+  background-color: #f8f9fa;
+  font-family: "Open Sans", sans-serif;
+}
+
+[dir="rtl"] body {
+  font-family: "Cairo", sans-serif;
+}
+
+.ticket-section {
+  padding: 3rem 0;
+}
+
+.ticket-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.ticket-header {
+  background: linear-gradient(135deg, #0099ff 0%, #007acc 100%);
+  color: white;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.ticket-header .ticket-success-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.ticket-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+[dir="rtl"] .ticket-header h1 {
+  font-family: "Cairo", sans-serif;
+}
+
+.ticket-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.ticket-body {
+  padding: 2.5rem;
+}
+
+.appointment-number-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: #e9f5ff;
+  border-radius: 10px;
+  border: 1px dashed #007acc;
+}
+
+.appointment-number-section h2 {
+  font-size: 1.3rem;
+  color: #005c99;
+  margin-bottom: 0.5rem;
+}
+
+[dir="rtl"] .appointment-number-section h2 {
+  font-family: "Cairo", sans-serif;
+}
+
+.appointment-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #007acc;
+  letter-spacing: 1px;
+}
+
+.ticket-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.ticket-detail-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0099ff;
+}
+[dir="rtl"] .ticket-detail-item h4 {
+  font-family: "Cairo", sans-serif;
+}
+
+.ticket-detail-item p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.ticket-detail-item p strong {
+  color: #333;
+}
+
+.clinic-location-section {
+  margin-bottom: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.clinic-location-section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+[dir="rtl"] .clinic-location-section h4 {
+  font-family: "Cairo", sans-serif;
+}
+
+.clinic-location-section .clinic-address-web a {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: 500;
+}
+.clinic-location-section .clinic-address-web a:hover {
+  text-decoration: underline;
+}
+.clinic-location-section .clinic-address-web i {
+  margin-right: 0.5rem;
+}
+[dir="rtl"] .clinic-location-section .clinic-address-web i {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+.clinic-address-print {
+  display: none; /* Hidden by default, shown on print */
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+.clinic-location-section small {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.ticket-footer {
+  padding: 2rem 2.5rem;
+  background-color: #f8f9fa;
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+}
+
+.ticket-footer .btn {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+}
+[dir="rtl"] .ticket-footer .btn {
+  font-family: "Cairo", sans-serif;
+}
+
+.ticket-footer .print-button {
+  background-color: #007acc;
+  border-color: #007acc;
+  color: white;
+}
+.ticket-footer .print-button:hover {
+  background-color: #005c99;
+  border-color: #005c99;
+}
+
+.ticket-footer .back-home-button {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+.ticket-footer .back-home-button:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Print Styles */
+@media print {
+  /* Reset all margins and padding for print */
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  body {
+    font-family: "Cairo", "Tajawal", Arial, sans-serif !important;
+    direction: inherit !important;
+    text-align: inherit !important;
+    background: white !important;
+    color: black !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Hide elements that shouldn't be printed */
+  .navbar,
+  .header,
+  .footer,
+  .print-button,
+  .back-home-button,
+  .btn,
+  nav,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  /* Main ticket container for print */
+  .ticket-section {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    background: white !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 0 !important;
+  }
+
+  .ticket-card {
+    border: 2px solid #333 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+    padding: 20px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* RTL specific print styles */
+  [dir="rtl"] .ticket-card {
+    direction: rtl !important;
+    text-align: right !important;
+  }
+
+  [dir="rtl"] .ticket-header,
+  [dir="rtl"] .ticket-body,
+  [dir="rtl"] .appointment-number-section {
+    text-align: center !important;
+  }
+
+  [dir="rtl"] .ticket-details-grid {
+    direction: rtl !important;
+  }
+
+  [dir="rtl"] .detail-row {
+    direction: rtl !important;
+    text-align: right !important;
+    justify-content: flex-start !important;
+  }
+
+  [dir="rtl"] .detail-row strong {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+  }
+
+  /* Header styles for print */
+  .ticket-header {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    border-bottom: 1px solid #333 !important;
+    padding-bottom: 15px !important;
+  }
+
+  .ticket-success-icon {
+    font-size: 2rem !important;
+    color: #28a745 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .ticket-header h1 {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    margin-bottom: 5px !important;
+    color: #333 !important;
+  }
+
+  .ticket-header p {
+    font-size: 1rem !important;
+    color: #666 !important;
+  }
+
+  /* Appointment number for print */
+  .appointment-number-section {
+    text-align: center !important;
+    margin: 20px 0 !important;
+    padding: 15px !important;
+    border: 2px dashed #333 !important;
+    background: #f8f9fa !important;
+  }
+
+  .appointment-number-section h2 {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    color: #333 !important;
+  }
+
+  .appointment-number {
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    color: #0099ff !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Details grid for print */
+  .ticket-details-grid {
+    display: block !important;
+    margin: 20px 0 !important;
+  }
+
+  .ticket-detail-item {
+    margin-bottom: 20px !important;
+    padding: 15px !important;
+    border: 1px solid #ddd !important;
+    background: #fafafa !important;
+    page-break-inside: avoid !important;
+  }
+
+  .ticket-detail-item h4 {
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    color: #333 !important;
+    border-bottom: 1px solid #ddd !important;
+    padding-bottom: 5px !important;
+  }
+
+  .detail-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 8px !important;
+    padding: 5px 0 !important;
+  }
+
+  .detail-row strong {
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-right: 10px !important;
+    min-width: 30% !important;
+  }
+
+  .detail-row span {
+    color: #555 !important;
+    flex: 1 !important;
+    text-align: left !important;
+  }
+
+  [dir="rtl"] .detail-row span {
+    text-align: right !important;
+  }
+
+  /* Clinic location for print */
+  .clinic-location-section {
+    margin-top: 20px !important;
+    padding: 15px !important;
+    border: 1px solid #ddd !important;
+    background: #f0f8ff !important;
+  }
+
+  .clinic-location-section h4 {
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    color: #333 !important;
+  }
+
+  .clinic-address-web {
+    display: none !important;
+  }
+
+  .clinic-address-print {
+    display: block !important;
+    font-size: 1rem !important;
+    color: #555 !important;
+  }
+
+  .clinic-address-print i {
+    margin-right: 5px !important;
+    color: #0099ff !important;
+  }
+
+  [dir="rtl"] .clinic-address-print i {
+    margin-right: 0 !important;
+    margin-left: 5px !important;
+  }
+
+  /* Force single page print */
+  body {
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  .ticket-section {
+    height: 100vh !important;
+    overflow: hidden !important;
+    page-break-after: avoid !important;
+  }
+
+  .ticket-card {
+    max-height: 90vh !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+  }
+
+  /* Hide content that might cause page overflow */
+  .ticket-footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    padding: 10px !important;
+  }
+
+  /* Ensure no page breaks */
+  * {
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Force everything to fit on one page */
+  html,
+  body {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  /* Scale content to fit if necessary */
+  .ticket-card {
+    transform: scale(0.85) !important;
+    transform-origin: top center !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Additional RTL support for screen view */
+[dir="rtl"] .detail-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .detail-row strong {
+  margin-right: 0;
+  margin-left: 10px;
+}
